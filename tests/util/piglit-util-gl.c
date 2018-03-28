@@ -1029,10 +1029,10 @@ read_pixels_float(GLint x, GLint y, GLsizei width, GLsizei height,
 		return pixels;
 	}
 
-	pixels_b = malloc(ncomponents * sizeof(GLubyte));
-	glReadPixels(x, y, width, height, format, GL_UNSIGNED_BYTE, pixels_b);
+	pixels_b = malloc(width * height * 4 * sizeof(GLubyte));
+	glReadPixels(x, y, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels_b);
 	for (i = 0; i < ncomponents; i++)
-		pixels[i] = pixels_b[i] / 255.0;
+		pixels[i] = pixels_b[i/ncomponents*4+i%ncomponents] / 255.0;
 	free(pixels_b);
 	return pixels;
 }
