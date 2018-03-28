@@ -4995,5 +4995,25 @@ with profile.test_list.group_manager(
     g(['arb_bindless_texture-uint64_attribs'], 'uint64_attribs')
     g(['arb_bindless_texture-uniform'], 'uniform')
 
+# Group NV_conservative_raster
+with profile.test_list.group_manager(
+	PiglitGLTest,
+	grouptools.join('spec', 'NV_conservative_raster')) as g:
+    g(['nv_conservative_raster-draw'], 'draw')
+    g(['nv_conservative_raster-dlist'], 'dlist')
+    g(['nv_conservative_raster-attrib'], 'attrib')
+
+# Group NV_conservative_raster_dilate
+with profile.test_list.group_manager(
+	PiglitGLTest,
+	grouptools.join('spec', 'NV_conservative_raster_dilate')) as g:
+    g(['nv_conservative_raster_dilate-draw'], 'draw')
+
+# Group NV_conservative_raster_pre_snap_triangles
+with profile.test_list.group_manager(
+	PiglitGLTest,
+	grouptools.join('spec', 'NV_conservative_raster_pre_snap_triangles')) as g:
+    g(['nv_conservative_raster_pre_snap_triangles-draw'], 'draw')
+
 if platform.system() is 'Windows':
     profile.filters.append(lambda p, _: not p.startswith('glx'))
